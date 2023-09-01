@@ -1,0 +1,41 @@
+<div class="container flex justify-center mx-auto">
+    <div class="flex flex-col">
+        <div class="w-full">
+            <div class="border-b border-gray-300 shadow">
+                <table class="divide-y divide-gray-300 ">
+                    <thead class="bg-gray-50">
+                        <tr>
+                            <th class="px-8 py-2 text-md text-gray-500">
+                                Title
+                            </th>
+                            <th class="px-8 py-2 text-md text-gray-500">
+                                Genre
+                            </th>
+                            <th class="px-8 py-2 text-md text-gray-500">
+                                Developers
+                            </th>
+                            <th class="px-8 py-2 text-md text-gray-500">
+                                Date
+                            </th>
+                            <th class="px-8 py-2 text-md text-gray-500">
+                                Rating
+                            </th>
+                            <th class="px-8 py-2 text-md text-gray-500">
+                                User Score
+                            </th>
+                            <th class="px-8 py-2 text-md text-gray-500">
+                                Meta Score
+                            </th>
+                        </tr>
+                    </thead>
+                    <!-- Load table rows -->
+                    <tbody class="bg-white divide-y divide-gray-300">
+                        <% for (const game of data) { %>
+                            <%- include("row", { game }) %>
+                        <% } %>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

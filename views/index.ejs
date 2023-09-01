@@ -4,16 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/styles/main.css">
-    <title>Document</title>
+    <title>Nintendo Game Library</title>
 </head>
-<body>
-    
-    <div class="grid grid-cols-3">
-        <% for (const game of data) { %>
-            <%- include("partials/game", { game }) %>
-        <% } %>
-    </div>
-    
+<body class="w-full ">
+    <!-- Load header -->
+    <%- include("partials/header") %>
 
+    <!-- Load search module -->
+    <%- include("partials/search") %>
+
+    <!-- Load table -->
+    <%- include("partials/table", { data }) %>
+
+    <!-- Icon importing -->
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </body>
 </html>

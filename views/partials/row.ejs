@@ -1,0 +1,21 @@
+<tr class="text-center text-gray-500">
+  <td class="px-6 py-4 text-sm"><%= game.title || "--" %></td>
+  <td class="px-6 py-4">
+    <div class="text-sm"><%= game.genres.join(", ") || "--" %></div>
+  </td>
+  <td class="px-6 py-4">
+    <div class="text-sm"><%= game.developers || "--" %></div>
+  </td>
+  <td class="px-6 py-4">
+    <div class="text-sm"><%= game.date || "--" %></div>
+  </td>
+  <td class="px-6 py-4">
+    <div class="text-sm"><%= game.esrb_rating || "--" %></div>
+  </td>
+  <td class="px-6 py-4">
+    <div class="text-sm"><%= game.user_score || "--" %></div>
+  </td>
+  <td class="px-6 py-4">
+    <div class="text-sm"><%= game.meta_score || "--" %></div>
+  </td>
+</tr>
