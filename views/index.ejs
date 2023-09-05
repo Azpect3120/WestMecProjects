@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="/styles/main.css">
     <title>Nintendo Game Library</title>
 </head>
-<body class="w-full ">
+<body class="w-full">
     <!-- Load header -->
     <%- include("partials/header") %>
 
@@ -14,7 +14,7 @@
     <%- include("partials/search") %>
 
     <!-- Load table -->
-    <%- include("partials/table", { data }) %>
+    <%- include("partials/table", { data, pageCount }) %>
 
     <!-- Icon importing -->
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>

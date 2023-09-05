@@ -1,29 +1,29 @@
-<div class="container flex justify-center mx-auto">
-    <div class="flex flex-col">
-        <div class="w-full">
-            <div class="border-b border-gray-300 shadow">
-                <table class="divide-y divide-gray-300 ">
+<div class="w-full min-w-full flex justify-center mx-auto pb-8">
+    <div class="flex flex-col w-full">
+        <div class="w-full px-4">
+            <div class="border-b border-gray-300 shadow w-full">
+                <table class="divide-y divide-gray-300 pb-8 w-full">
                     <thead class="bg-gray-50">
-                        <tr>
-                            <th class="px-8 py-2 text-md text-gray-500">
+                        <tr class="text-md text-gray-500">
+                            <th class="px-8 py-2">
                                 Title
                             </th>
-                            <th class="px-8 py-2 text-md text-gray-500">
+                            <th class="px-8 py-2">
                                 Genre
                             </th>
-                            <th class="px-8 py-2 text-md text-gray-500">
+                            <th class="px-8 py-2">
                                 Developers
                             </th>
-                            <th class="px-8 py-2 text-md text-gray-500">
+                            <th class="px-8 py-2">
                                 Date
                             </th>
-                            <th class="px-8 py-2 text-md text-gray-500">
+                            <th class="px-8 py-2">
                                 Rating
                             </th>
-                            <th class="px-8 py-2 text-md text-gray-500">
+                            <th class="px-8 py-2">
                                 User Score
                             </th>
-                            <th class="px-8 py-2 text-md text-gray-500">
+                            <th class="px-8 py-2">
                                 Meta Score
                             </th>
                         </tr>
@@ -35,7 +35,44 @@
                         <% } %>
                     </tbody>
                 </table>
+               
+                <div class="w-full bg-gray-100 flex justify-between items-center text-2xl">
+                    <button class="px-8 py-2" id="prev">
+                        <ion-icon name="arrow-back-outline"></ion-icon>
+                    </button>
+
+                    <p id="pageCount" class="text-sm"></p>
+
+                    <button class="px-8 py-2" id="next"
+                        <% if (data.length == 10) { %>
+                            type="disabled"
+                        <% } %>
+                        >
+                        <ion-icon name="arrow-forward-outline"></ion-icon>
+                    </button>
+                </div>
             </div>
         </div>
     </div>
 </div>
+<script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const currentPage = parseInt(urlParams.get('page') || 1);
+    
+    document.getElementById("pageCount").textContent = `${currentPage}/<%- pageCount %>`;
+    
+
+    // <% if (data.length == 10) { %>
+    document.getElementById("next").addEventListener("click", () => {
+        const nextPage = currentPage + 1;
+        const newLocation = window.location.href.includes("page=") ? window.location.href.replace(`page=${currentPage}`, `page=${nextPage}`) : `${window.location.href}?page=${nextPage}`;
+        window.location.href = newLocation;       
+    });
+    // <% } %> 
+    
+    document.getElementById("prev").addEventListener("click", () => {
+        const prevPage = currentPage - 1 <= 0 ? 1 : currentPage - 1;
+        const newLocation = window.location.href.includes("page=") ? window.location.href.replace(`page=${currentPage}`, `page=${prevPage}`) : `${window.location.href}?page=${prevPage}`;
+        window.location.href = newLocation;       
+    });
+</script>
