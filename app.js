@@ -33,7 +33,6 @@ app.get("/search", (req, res) => {
     const valid = data.filter(game => game.title.toLowerCase().includes(titles));
     const pageCount = (Math.floor(valid.length / 10) + 1);
     const results = valid.slice(((page - 1) * count), ((page - 1) * count) + count);
-    console.log(results);
     res.status(200).render("index", { data: results, pageCount: pageCount || 0 });       
 });
 
