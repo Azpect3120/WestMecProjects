@@ -5,48 +5,6 @@
                 <table class="divide-y divide-gray-300 pb-8 w-full">
                     <thead class="bg-gray-50">
                         <tr class="text-md text-gray-500">
-                            <!-- <th class="px-8 py-2">
-                                Title
-                            </th>
-                            <th class="px-8 py-2">
-                                Genre
-                            </th>
-                            <th class="px-8 py-2">
-                                Developers
-                            </th>
-                            <th class="px-8 py-2">
-                                Date
-                            </th>
-                            <th class="px-8 py-2">
-                                Rating
-                            </th>
-                            <th class="px-8 py-2">
-                                User Score
-                            </th>
-                            <th class="px-8 py-2">
-                                Meta Score
-                            </th> -->
-                            <!-- <th class="px-8 py-2">
-                                Title
-                            </th>
-                            <th class="px-8 py-2">
-                                Genre
-                            </th>
-                            <th class="px-8 py-2">
-                                Developers
-                            </th>
-                            <th class="px-8 py-2">
-                                Date
-                            </th>
-                            <th class="px-8 py-2">
-                                Rating
-                            </th>
-                            <th class="px-8 py-2">
-                                User Score
-                            </th>
-                            <th class="px-8 py-2">
-                                Meta Score
-                            </th> -->
                             <th class="px-8 py-2 text-md text-gray-500 dark:bg-bg-dark dark:text-gray-100">
                                 Title
                             </th>
@@ -107,14 +65,15 @@
     // <% if (data.length == 10) { %>
     document.getElementById("next").addEventListener("click", () => {
         const nextPage = currentPage + 1;
-        const newLocation = window.location.href.includes("page=") ? window.location.href.replace(`page=${currentPage}`, `page=${nextPage}`) : `${window.location.href}?page=${nextPage}`;
+        // const newLocation = window.location.href.includes("page=") ? window.location.href.replace(`page=${currentPage}`, `page=${nextPage}`) : `${window.location.href}&page=${nextPage}`;
+        const newLocation = window.location.href.includes("page=") ? window.location.href.replace(`page=${currentPage}`, `page=${nextPage}`) : window.location.href.includes("titles=") ? `${window.location.href}&page=${nextPage}` : `${window.location.href}?page=${nextPage}`;
         window.location.href = newLocation;       
     });
     // <% } %> 
     
     document.getElementById("prev").addEventListener("click", () => {
         const prevPage = currentPage - 1 <= 0 ? 1 : currentPage - 1;
-        const newLocation = window.location.href.includes("page=") ? window.location.href.replace(`page=${currentPage}`, `page=${prevPage}`) : `${window.location.href}?page=${prevPage}`;
+        const newLocation = window.location.href.includes("page=") ? window.location.href.replace(`page=${currentPage}`, `page=${prevPage}`) : window.location.href.includes("titles=") ? `${window.location.href}&page=${prevPage}` : `${window.location.href}?page=${prevPage}`;
         window.location.href = newLocation;       
     });
 </script>
