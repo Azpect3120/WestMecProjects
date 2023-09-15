@@ -2,7 +2,7 @@
 
 A large JSON library that contains 1,400 different nintendo games and some basic stats
 
-[Link server](https://nintendo-games-library.onrender.com/)
+[Live server](https://nintendo-games-library.onrender.com/)
 
 <br>
 
