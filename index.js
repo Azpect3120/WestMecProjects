@@ -6,7 +6,7 @@ const fs = require("fs");
 const serverData = {
     // Server host and port
     host: "localhost",
-    port: 3000,
+    port: process.env.PORT || 3000,
     // Page data: paths and data
     pages: {
         base: {
