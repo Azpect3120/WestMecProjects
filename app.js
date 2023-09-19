@@ -11,7 +11,7 @@ app.set("views", "views");
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({ extended: false }));
 
-mongoose.connect("mongodb+srv://hhargr836:Panther4487@cluster0.raw15kd.mongodb.net/TaskManager")
+mongoose.connect("mongodb+srv://hhargr836:<password>@cluster0.raw15kd.mongodb.net/TaskManager")
   .then(() => console.log("Connected to database"))
   .catch(err => console.error(err))
 
