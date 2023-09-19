@@ -3,31 +3,56 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/main.css">
     <title>Task Manager</title>
 </head>
 <body>
-    <form action="/createTask" method="POST">
-        <input type="text" name="task" placeholder="Enter task here" required>
-        <button type="submit"> Add Task </button>
-    </form>
-    
-    <ul>
-    <% for (const task of tasks) { %>
-        <li>
-            <form action="/editTask" method="POST" id="form-<%- task.id %>">
-                <input type="hidden" name="id" value="<%- task.id %>">
-                <input type="text" disabled id="<%- task.id %>" name="new_task" value="<%- task.task %>">
+    <div class="w-full h-screen overflow-x-auto bg-purple-200 flex flex-col items-center justify-center">
+        <div class="bg-purple-400 w-1/3 py-8 px-5 rounded-md">
+            <form action="/createTask" method="POST">
+                <input
+                    type="text"
+                    name="task"
+                    placeholder="Enter task here"
+                    required
+                    class="w-3/4 text-md p-1.5 outline-none rounded-md"
+                >
+                <button type="submit" class="px-3 py-1.5 bg-purple-700 text-white rounded-md hover:bg-purple-900 transition-all"> Add Task </button>
             </form>
-            
-            <button onclick="toggleEdit('<%- task.id %>');">Edit</button>
+        </div>
+        
+        <ul class="w-1/3 py-8 px-5 my-5 bg-white rounded-md divide-y-2 divide-purple-300">
+        <% for (const task of tasks) { %>
+            <li class="flex p-2 hover:bg-purple-100 items-center">
+                <form action="/editTask" method="POST" id="form-<%- task._id %>" class="w-full">
+                    <input type="hidden" name="id" value="<%- task._id %>">
+                    <input
+                        type="text"
+                        disabled
+                        id="<%- task._id %>"
+                        name="new_task"
+                        value="<%- task.task %>"
+                        class="bg-transparent px-2 py-1 rounded-md w-3/4 outline-none"    
+                    >
+                </form>
+                
+                <button
+                    onclick="toggleEdit('<%- task._id %>');"
+                    class="ml-auto flex items-center justify-center p-1 m-1"
+                >
+                    <ion-icon name="pencil" class="text-lg text-gray-700 hover:text-purple-500 transition-all"></ion-icon>
+                </button>
 
-            <form action="/deleteTask" method="POST" id="delete-<%- task.id %>">
-                <input type="hidden" name="task_id" value="<%- task.id %>">
-                <button type="submit"> Delete </button>
-            </form>
-        </li>
-    <% } %>
-    </ul>
+                <form action="/deleteTask" method="POST" id="delete-<%- task._id %>">
+                    <input type="hidden" name="id" value="<%- task._id %>">
+                    <button type="submit" class="flex items-center justify-center p-1 m-1">
+                        <ion-icon name="trash-bin" class="text-lg text-gray-700 hover:text-red-500 transition-all"></ion-icon>
+                    </button>
+                </form>
+            </li>
+        <% } %>
+        </ul>
+    </div>
 
     <script>
         function toggleEdit (id)
@@ -38,11 +63,18 @@
 
             if (input.hasAttribute("disabled")) {
                 input.removeAttribute("disabled");
+                input.classList.remove("bg-transparent");
+                input.classList.add("bg-purple-300");
             } else {
                 form.submit();
                 input.setAttribute("disabled", "disabled");
+                input.classList.add("bg-transparent");
+                input.classList.remove("bg-purple-300");
+
             }
         }
     </script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </body>
 </html>
