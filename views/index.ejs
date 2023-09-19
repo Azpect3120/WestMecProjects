@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Manager</title>
+</head>
+<body>
+    <form action="/createTask" method="POST">
+        <input type="text" name="task" placeholder="Enter task here" required>
+        <button type="submit"> Add Task </button>
+    </form>
+    
+    <ul>
+    <% for (const task of tasks) { %>
+        <li>
+            <form action="/editTask" method="POST" id="form-<%- task.id %>">
+                <input type="hidden" name="id" value="<%- task.id %>">
+                <input type="text" disabled id="<%- task.id %>" name="new_task" value="<%- task.task %>">
+            </form>
+            
+            <button onclick="toggleEdit('<%- task.id %>');">Edit</button>
+
+            <form action="/deleteTask" method="POST" id="delete-<%- task.id %>">
+                <input type="hidden" name="task_id" value="<%- task.id %>">
+                <button type="submit"> Delete </button>
+            </form>
+        </li>
+    <% } %>
+    </ul>
+
+    <script>
+        function toggleEdit (id)
+        {
+            const input = document.getElementById(id);
+            const form = document.getElementById("form-" + id);
+            console.log(input);
+
+            if (input.hasAttribute("disabled")) {
+                input.removeAttribute("disabled");
+            } else {
+                form.submit();
+                input.setAttribute("disabled", "disabled");
+            }
+        }
+    </script>
+</body>
+</html>
