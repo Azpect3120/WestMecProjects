@@ -136,6 +136,33 @@ app.post("/reset", async (req, res) => {
     }
 });
 
+// Delete a users account
+app.post("/delete", async (req, res) => {
+    // Request body
+    const { id, password } = req.body;
+
+    // Query database for user
+    const user = await User.findById(id);
+
+    // Match passwords
+    if (user) {
+        if (compare(user.password, password)) {
+            const result = await User.findByIdAndRemove(id);
+            result != null ? res.status(204).redirect("/login") : res.status(500).render("error", { message: "There was an error while deleting your user.", redirect: "home", status: "500" });
+        } else {
+            res.status(401).render("error", { message: "Provided passwords do not match.", redirect: "home", status: "401" });
+        }
+    } else {
+        res.status(404).render("error", { message: "User was not found in the database.", redirect: "login", status: "404" });
+    }
+});
+
+// Logs the user out
+app.get("/logout", (req, res) => {
+    req.session.user = null;
+    res.status(301).redirect("/login");
+});
+
 // Launch server
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, console.log(`Server is live at port ${PORT}`));
