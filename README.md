@@ -2,6 +2,8 @@
 
 This project demonstrates how to build a user authentication system using Node.js, Express, MongoDB, and session management. The focus is on security best practices, such as encrypting passwords and using secure sessions. The project also includes detailed explanations and step-by-step instructions to help junior developers understand the code.
 
+A live demo of this project can found at [render.com](https://user-login-qbtx.onrender.com/login)
+
 ## Step 1: Setup
 
 Start by installing the required dependencies:
