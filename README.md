@@ -85,7 +85,7 @@ npm install -D tailwindcss
 
 2. Initialize tailwindcss by running this command frm the terminal or cmd prompt:
 ```sh
-npx init tailwindcss
+npx tailwindcss init
 ```
 
 3. This will create a file inside of our root folder called `tailwind.config`. We need this config files so that we can configure and use tailwind's utility classes. A basic configuration setup includes adding the content paths to the `content` array and defining the `darkMode` type. To find more information and to further configure your tailwind setup, view the [docs](https://tailwindcss.com/docs/installation) here.
@@ -112,7 +112,9 @@ module.exports = {
 Single build:
 ```sh
 npx tailwindcss -i ./src/input.css -o ./dist/output.css
+```
 or
+```
 npx tailwindcss -i ./src/input.css -o ./dist/output.css --watch
 ```
 
