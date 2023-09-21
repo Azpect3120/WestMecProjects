@@ -127,3 +127,11 @@ Tailwind is included as part of this project but can easily be removed if desire
 ```sh
 npm remove tailwindcss
 ```
+
+## Step 5: Run the Program
+
+Once you have styled the app you can run the server using the `npm start` command in the `package.json` file.
+
+```sh
+npm start
+```
